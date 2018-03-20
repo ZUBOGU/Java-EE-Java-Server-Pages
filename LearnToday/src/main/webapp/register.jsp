@@ -20,14 +20,14 @@
 <div class="form-group">
 <label class="col-md-2 control-label">User name :</label>
 <div class="col-md-4">
-<input type="text" class="form-control" name="userName" required/> 
+<input type="text" class="form-control" name="userName" placeholder="Enter Username" required/>
 </div>
 </div>
 
 <div class="form-group">
 <label class="col-md-2 control-label">Password :</label>
 <div class="col-md-4">
-<input type="password" class="form-control" name="password" required/> 
+<input type="password" class="form-control" name="password" placeholder="Enter Password" required/>
 </div>
 </div>
 

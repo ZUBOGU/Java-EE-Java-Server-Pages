@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>LearnToday - Login Page</title>
+<title>LearnToday - Login Form</title>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 <div class="form-group">
 <label class="col-md-2 control-label">Password :</label>
 <div class="col-md-4">
-<input type="password" class="form-control" name="password" required/> 
+<input type="password" class="form-control" name="password" placeholder="Enter Password" required/>
 </div>
 </div>
 
