@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>LearnToday-Way To Success</title>
+    <title>LearnToday - Way To Success</title>
 </head>
 <body>
 <div class="container">
