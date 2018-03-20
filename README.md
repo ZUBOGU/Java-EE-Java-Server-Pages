@@ -7,13 +7,17 @@ Next, explore Java Standard Tag Library, Expression Language, Using Custom Tags,
 
 Finally, tackle Project Development using the above topics.
 
-## JSP
+## JSP Fundamentals
 
 Java Server Pages is a technology that helps software developers to create platform independent dynamic web applications rapidly based
 on HTML or XML document types.
 
-limitations of servlets: Web application development using servlets requires strong knowledge of Java. Writing the HTML code within the
-servlet page will be very difficult. Servlet is a picture of both presentation logic written using HTML and business logic written using Java. Whenever we make any changes or modifications to the servlet, it has to be recompiled and then redeployed to see the changes
+limitations of servlets:
+```
+Requires strong knowledge of Java
+Writing HTML code will be difficult
+Need to recompile & redeploy
+```
 
 Advantage of Using JSP:
 ```
@@ -27,17 +31,14 @@ Easy to learn, implement, and to maintain JSP pages.
 
 ### JSP Development Models
 #### JSP Model 1 Architecture
-Pros: 
-
+```
+Pros:
 Development will be easy and faster
-
-Cons: 
-
-Not suitable for large-scale application development.
-
-No separation of Concerns.
-
-Maintenance will be problem.
+Cons:
+Not suitable for large-scale application development
+No Separation of Concerns
+Maintenance will be problem
+```
 
 #### JSP Model 2 Architecture (MVC, model, view, controller)
 Model: hold business logic and the state, retrieving and update the data. Talks to the DB.
@@ -51,22 +52,16 @@ JSP - controller and view. Java Components - model.
 
 ##### JSP Model 2 Architecture - MVC 2
 Servlet - Controller. JSP - View. Java Beans - model. 
-
+```
 Pros:
-
-Navigation Control Centralized.
-
-Follows Industry Standard.
-
-Easy to Maintain.
-
-Better Separation of Concerns.
-
+Navigation Control Centralized
+Follows Industry Standard
+Easy to Maintain
+Better Separation Of Concern
 Parallel Development
-
-Cons:
-
+Cons :
 Need to Recompile the Servlet Class
+```
 
 ### Expression Tag
 JSP expressions are used to compute an expression and the result of that is included in HTML page that's returned to the browser.
@@ -79,12 +74,16 @@ new java,util.Date()
 <p>
 ```
 
+This is a ```out.write()``` in ```_jspService(...)``` java class.
+
 ### Declaration Tag
 Syntax: to define the declaration tag
 ```
 <%!%>
 <%! int id = 10; %>
 ```
+
+This is a declaration(method or variable) in ```demo_jsp.java``` class.
 
 ### Scriptlet Tag
 Scripting Element which allows us to add any variable declaration and any computed logic with in the JSP page. It cannot have any method.
@@ -96,29 +95,51 @@ Syntax
 %>
 ```
 
-### @page Directive
+This is a variable or computed logic inside ```_jspService(...)``` method of ```demo_jsp.java``` class.
 
+## JSP Directive
+The directives of JSP are used to provide some meaningful information about the current JSP page to the JSP Container which will be required during the Translation phase.
+
+### @page Directive
 Syntax: Define a page directive
 
 ```<%@ page attribute="value" attribute="value" ... %>```
 
 Can use multiple page directives. Cannot specify same attribute more than once(exclude import).
+```
+language="scripting language"
+extends="className"
+import="importList"
+session="true|false"
+buffer="none="none|sizekb"
+autoFlush="true|false"
+info="info_text"
+contenetType="ctinfo"
+errorPage="error_url"
+isErrorpage="true|false"
+```
 
 ```
-language:
 <%@ page language="java" %>
-<%@ page import="java.sql.*", "java,util.*" %>
+<%@ page import="java.sql.*, java,util.*" %>
+<%@ page import=“java.sql.*”,import=“java.util.*”%>
 <%@ page info="this is home page" %>
 <%@ page extend="this is home page" %>
 <%@ page contentType="text/html" %>
 <%@ page isELIgnored="true" %>  // expression language
-<%@ page isThreadSafe="true" %> 
+<%@ page isThreadSafe="true" %>
+<%@ page pageEncoding="UTF-8" %>
+<%@ page session="false" %>
+<%@ page buffer="10kb" %>
+<%@ page autoFlush="true|false" %>
 ```
 
+### @page Directive
 
+### LearnToday Project
+Use bootstrap CDN(content delivery network) for the application
 
 ### Deploy war file
-
 > cd JSPFundamentals
 
 > mvn clean install
