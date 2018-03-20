@@ -142,6 +142,127 @@ Include Directive
 <%@include file="header.jsp"%>
 ```
 
+### @taglib Directive
+```
+Set of custom tags
+Identifies the location of the library
+Identifying the custom tags
+```
+
+Syntax: To Define the taglib directive
+```
+<%@taglib uri="uriofTagLibrary" prefix="prefixOfTag"/%>
+<%jsp:directive.tagliburi="uri" prefix="prefixOfTag"/%>
+```
+
+## Request and Server Context through Built-in Objects
+### Request
+Request Object Methods
+```
+setAttribute
+getAttribute
+getCookies()
+getHeaderNames()
+getHeader(string name)
+getMethod()
+getParameter(string name)
+getQueryString(string name)
+getLocale()
+```
+
+### Response
+```
+setIntHeader(String name,Intvalue)
+response.setHeader("Refresh",5)
+
+setContentType(String type)
+response.setContentType("text/html")
+
+sendRedirect(String location)
+response.sendRedirect("sucess.jsp")
+
+addCookie(Cookie cookie)
+response.addCookie(userCookie)
+```
+
+### Out
+In Servlets
+```
+Prinitwriterout =response.getWriter();
+```
+
+In JSP
+```
+Out [BuiltinObject]
+jspWriterout=pagecontext.getout()
+```
+Throws IOException
+
+Out Built-in Object Methods
+```
+print
+printIn
+flush
+
+```
+Syntax to display the current date and time
+```
+out.print("Today is:"+java.util.Calendar.getInsatance().getTime());
+```
+
+### PageContext
+Important Methods to PageContext
+```
+setAttribute
+getAttribute
+findAttribute
+removeAttribute
+```
+```
+<%Float no1=newFloat(62.5)%>
+<%pageContext.setAttribute("no1“,no1);%>
+<%pageContext.getAttribute("no1“,no1)%>
+<%Float no2=newFloat(84.3)%>
+<%pageContext.setAttribute
+("no2“,no2,PageContext.”SESSION_SCOPE");%>
+<%pageContext.getAttribute
+("no2“,PageContext.”SESSION_SCOPE");%>
+```
+
+### Session
+Session Builtin Object
+```
+setAttribute( String name,Objectvalue)
+getAttribute(String name)
+removeAttribute(String name)
+```
+Syntax To set the session
+```
+<%pageContext.setAttribute
+("no",value,PageContext.SESSION_SCOPE); %>
+<%session.setAttribute("no",value)%>
+```
+
+### Application
+```
+javax.servlet.ServletContextapplication=pageContext.getServeltContext()
+```
+Syntax
+```
+application.setAttribute(String name,Object value) // To Set
+application.getAttribute(String name) // To Read
+```
+
+### Config
+Config build in object is used for getting configuration information for a particular JSP page.
+Config Implicit Object
+```
+getInitParameter(String name)
+getInitParameterNames()
+getServletContext()
+getServletName()
+```
+
 ### LearnToday Project
 Use bootstrap CDN(content delivery network) for the application
 
