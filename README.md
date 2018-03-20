@@ -134,7 +134,13 @@ isErrorpage="true|false"
 <%@ page autoFlush="true|false" %>
 ```
 
-### @page Directive
+### @inclue Directive
+will specify the JSP Container to read the specified file and merges its contents into the JSP source code currently being parsed at the Translation phase
+Include Directive
+```
+<%@ include file="filename"%>
+<%@include file="header.jsp"%>
+```
 
 ### LearnToday Project
 Use bootstrap CDN(content delivery network) for the application
