@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" import="java.sql.*,java.util.*" session="true" errorPage="error.jsp"%>
 
-
 <%! 
      Connection con = null;
      //authenticate user
@@ -24,7 +23,6 @@
 %>
 
 <%
-   
    //read username and password
    String userName = request.getParameter("userName");
    String password = request.getParameter("password");
@@ -51,11 +49,14 @@
    
     System.out.println("User name :" + userName + "\nPassword :" + password + "\nauth Flag : " + authFlag);
     if (authFlag) {
-       session.setAttribute("user", userName);
-       response.sendRedirect("courses.jsp");
-   } else {
-       response.sendRedirect("error.jsp");
-   }
-   
-   
+        session.setAttribute("user", userName);
+        String requestUrl = request.getParameter("requestUrl");
+        if(requestUrl == null || requestUrl.length() == 0) {
+            response.sendRedirect("Courses.jsp");
+        } else {
+            response.sendRedirect(url+".jsp");
+        }
+    } else {
+        response.sendRedirect("error.jsp");
+    }
 %>

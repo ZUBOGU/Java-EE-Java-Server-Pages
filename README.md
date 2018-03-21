@@ -350,9 +350,6 @@ Sytax
 ```<jsp:param name="..." value="..."/>```
 Used as a sub-tag for include,forward or plugin action
 
-### LearnToday Project
-Use bootstrap CDN(content delivery network) for the application
-
 ### <jsp:useBean>
 UseBean action is a way for declaring and initializing the actual java bean component object.
 
@@ -432,6 +429,38 @@ Syntax
 <jsp:attribute>...</jsp:attribute> 
 <jsp:body>...</jsp:body> 
 </jsp:element>
+```
+
+
+### LearnToday Project Notes
+Use bootstrap CDN(content delivery network) for the application.
+
+#### Create Data for course in MySQL.
+Use mysql workbench to create Table
+```
+CREATE TABLE `mydb`.`course` (
+  `CourseID` INT(11) NOT NULL AUTO_INCREMENT,
+  `CourseTitle` VARCHAR(45) NOT NULL,
+  `Trainer` VARCHAR(45) NOT NULL,
+  `ImageUrl` VARCHAR(45) NULL DEFAULT NULL,
+  `Fees` INT(11) NULL DEFAULT NULL,
+  `CourseDescription` VARCHAR(450) NULL DEFAULT NULL,
+  PRIMARY KEY (`CourseID`),
+  UNIQUE INDEX `CourseTitle_UNIQUE` (`CourseTitle` ASC))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+```
+
+Insert Data
+```
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('1', 'Andrord', 'Zubo', './images/android.png', '3500', 'Android is a mobile …');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('2', 'ASP.NET MVC', 'zubo', './images/asomvc.png', '3499', 'ASP.NET MVC is …');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('3', 'JSP', 'Zubo	', './images/jsp.png', '9999', 'JavaServer Pages(JSP) is a …');
+
+```
+Query Table
+```
+SELECT * FROM mydb.course;
 ```
 
 #### MySQL
