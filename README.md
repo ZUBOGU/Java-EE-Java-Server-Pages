@@ -151,7 +151,7 @@ Identifying the custom tags
 
 Syntax: To Define the taglib directive
 ```
-<%@taglib uri="uriofTagLibrary" prefix="prefixOfTag"/%>
+<%@ taglib uri="uriofTagLibrary" prefix="prefixOfTag"/%>
 <%jsp:directive.tagliburi="uri" prefix="prefixOfTag"/%>
 ```
 
@@ -356,11 +356,28 @@ UseBean action is a way for declaring and initializing the actual java bean comp
 What is JavaBean?
 
 Class must be public. Have 0 argumnet constructor. variable declared inside are called as bean properties. All the bean propertieshsould bedeclared private. Bean property must be specift a setter and getter methods and public. Class must implement serializable interface.
+
+Sample Java Class
 ```
-public class JavaBeanName implements Serializable {
-public class JavaBeanName(){}
-private String propertyName;
-public void setPropertyName(String value){this.propertyName=value;} public void getPropertyName(){return this.propertyname;}
+package com.learntoday.model;
+import java.io.Serializable;
+@SuppressWarnings("serial")
+public class Name implements Serializable {
+	private String firstName;
+	private String lastName;
+	public Name(){ }
+	public void setFirstName(String fname){
+		this.firstName = fname;
+	}
+	public String getFirstName(){
+		return this.firstName;
+	}
+	public void setLastName(String lname){
+		this.lastName = lname;
+	}
+	public String getLastName(){
+		return this.lastName;
+	}
 }
 ```
 
@@ -503,6 +520,66 @@ Access Nested Property
 $(requestScope.person.car.carName)
 ```
 
+## JSP Standard Tag Library (JSTL)
+JSTL Features
+```
+Loop
+Condition Execution 
+Database Access 
+Internationalization 
+XML Processing
+```
+
+```
+Core Tags
+Formatting Tags
+Database Tags
+Functions Tags
+XML Tags
+```
+
+### Core Tags
+Syntax JSTL Core tags
+```
+<%@taglib prefix="c“ uri="http://java.sun.com/jsp/jstl/core" %>
+```
+
+```
+<c:out> <c:set> <c:remove> <c:catch> <c:if> <c:choose> <c:when> <c:otherwise> <c:import> <c:foreach> <c:forTokens> <c:param> <c:redirect> <c:url>
+```
+
+### Formatting Tags
+Syntax To use the JSTL Formatting tags
+```
+<%@taglib prefix="fmt" uri=" http://java.sun.com/jsp/jstl/fmt " %>
+```
+
+```
+<fmt:formatNumber> <fmt:parseNumber> <fmt:formatDate> <fmt:parseDate> <fmt:bundle> <fmt:setLocale> 
+<fmt:setBundle> <fmt:timeZone> <fmt:setTimeZone> <fmt:message> <fmt:requestEncoding>
+```
+
+### SQL Tags
+Syntax To include the JSTL SQL tag library
+```
+<%@ taglib prefix="sql" uri ="http://java.sun.com/jsp/jstl/sql" %>
+```
+
+```
+<sql:setDataSource> <sql:query> <sql:update> <sql:param> <sql:dateParam> <sql:transaction>
+```
+
+### JSTL Functions
+Syntax To include the JSTL Function tag library
+```
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/function" %>
+```
+
+```
+fn:contains fn:containsIgnoreCase fn:endsWith fn:idexOf fn:join fn:length 
+fn:split fn:stratsWith fn:substring fn:toUpperCase fn:toLowerCase fn:trim
+```
+
 ## LearnToday Project Notes
 Use bootstrap CDN(content delivery network) for the application.
 
@@ -522,12 +599,18 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 ```
 
-Insert Data
+Insert Data to Table course
 ```
 INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('1', 'Android', 'Zubo', './images/android.png', '3500', 'Android is a mobile …');
-INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('2', 'ASP.NET MVC', 'zubo', './images/asomvc.png', '3499', 'ASP.NET MVC is …');
-INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('3', 'JSP', 'Zubo	', './images/jsp.png', '9999', 'JavaServer Pages(JSP) is a …');
-
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('2', 'ASP.NET MVC', 'zubo', './images/aspmvc.png', '3499', 'ASP.NET MVC is …');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('3', 'ASP.NET', 'ZUBO', './images/aspnet.png', '3000', 'ASP.NET is ..');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('4', 'C#.NET', 'ZUBO', './images/csharp.png', '3000', 'C# is ..');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) 
+VALUES ('5', 'Xamarin.Forms', 'Zubo	', './images/forms.png', '9999', 'Xamarin,Forms is ..');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('6', 'Xamarin.IOS', 'zubo', './images/ios.png', '12999', 'Xamarin.IOS is ..');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('7', 'JDBC', 'ZUBO', './images/jdbc.png', '8999', 'JDBC is ..');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`)VALUES ('8', 'JSP', 'Zubo', './images/jsp.png', '9999', 'JavaServer Pages(JSP) is a …');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('9', 'Xamarin.Android', 'zubo', './images/xamarin.png', '19999', 'Xamarin,Android is ..');
 ```
 Query Table
 ```

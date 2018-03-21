@@ -8,7 +8,7 @@
 <body>
 <div class="container">
 <header>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" flush="true" />
 </header>
 
 <article>
@@ -45,8 +45,8 @@
    </div>
  </article>
  
- <footer>
- <%@ include file="footer.jsp" %>
- </footer>
+<footer>
+<jsp:include page="footer.jsp" flush="true" />
+</footer>
  </div>
 </body>

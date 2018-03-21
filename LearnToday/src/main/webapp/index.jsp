@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 <header>
-<%@ include file="header.jsp" %>
+<jsp:include page="header.jsp" flush="true" />
 </header>
 
 <article>
@@ -43,7 +43,7 @@
 </article>
 
 <footer>
-<%@ include file="footer.jsp" %>
+<jsp:include page="footer.jsp" flush="true" />
 </footer>
 </div>
 </body>
