@@ -263,8 +263,49 @@ getServletContext()
 getServletName()
 ```
 
+## Handling Exceptions in JSP
+```
+Try-Catch Block
+isErrorPage and ErrorPageattribute
+<error-page> tag
+```
+
+Syntax To Declare an Error Page for All Type of Exception
+```
+<error-page>
+<exception-type>java.lang.Throwable</exception-type>
+<location>/error.jsp</location>
+</error-page>
+```
+
+Syntax To Declare an Error Page for More Detailed Exception
+```
+<error-page>
+<exception-type>java.lang.ArithmeticException
+</exception-type>
+<location>/error.jsp</ location>
+</error-page> </error-page>
+```
+
+Syntax To Declare an Error Page for Based on HTTP Error Status Codes
+```
+<error-page>
+<error-code>404</error-code>
+<location>/error.jsp</location>
+</error-page>
+```
+
 ### LearnToday Project
 Use bootstrap CDN(content delivery network) for the application
+
+#### MySQL
+Create a new schema 'mydb' which is user to connect to DB. Create `users` table which as `username` and `password` columns.
+
+Then we can use JDBC to register new user and Authenticate existing users.
+```
+CREATE TABLE mydb.users (usrname VARCHAR(20), password VARCHAR(20));
+select * from users;
+```
 
 ### Deploy war file
 > cd JSPFundamentals
@@ -277,7 +318,7 @@ Go to browser and view the page.
 
 > http://localhost:8080/JSPFundamentals-1.0
 
-Add the url path in JSP Ppage
+Add the url path in JSP Page
 
 > http://localhost:8080/JSPFundamentals-1.0/HelloWorld.jsp
 

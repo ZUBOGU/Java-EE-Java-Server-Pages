@@ -29,4 +29,23 @@
     <param-name>dbPwd</param-name>
     <param-value>root</param-value>
   </context-param>
+
+    <servlet>
+        <servlet-name>errorHandler</servlet-name>
+        <jsp-file>/error.jsp</jsp-file>
+        <init-param>
+            <param-name>errorMessage</param-name>
+            <param-value>An internal error occurred while processing the request. Please contact System Administrator</param-value>
+        </init-param>
+        <init-param>
+            <param-name>imageUrl</param-name>
+            <param-value>images/error.png</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>errorHandler</servlet-name>
+        <url-pattern>/error.jsp</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -19,10 +19,9 @@
          }catch(Exception ex) {
              ex.printStackTrace();
          }
-         return false;s
+         return false;
      }
-%>     
-   
+%>
 
 <%
    
@@ -59,7 +58,4 @@
    }
    
    
-%>   
-   
-   
-   
+%>

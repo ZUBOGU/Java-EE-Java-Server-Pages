@@ -25,8 +25,7 @@
    		return false;
              
      }
-%>     
-   
+%>
 
 <%
    //read username and password
@@ -59,8 +58,5 @@
     } else {
        response.sendRedirect("error.jsp");
     }
-   
-%>   
-   
-   
-   
+
+%>
