@@ -431,11 +431,82 @@ Syntax
 </jsp:element>
 ```
 
+## Simplifying JSP Development with Expression Language
+### EL Fundamentals
+Expression Language Fundamentals
+```
+Introduced from JSP 2.0
+Accessing data from a JavaBean,Request,Response,Session,Applic ation
+*, +, - , () , [ ] and < or It, > or gt , ! or not 
+Null Friendly Language
+```
 
-### LearnToday Project Notes
+Syntax:
+```
+$ { expression }
+```
+
+EL Advantages
+```
+More information using simple expression 
+Easy to access or modify Bean Properties 
+Access Nested Property
+Collection Elements
+Provides Math and Conditional Operators 
+Supports Automatic Type Conversions
+```
+
+Syntax: Deployment Descriptor Element
+```
+<jsp:config>
+<el-ignored> true | false </el-ignored> 
+</ jsp:config>
+```
+
+Syntax: With in Page directive
+```
+<%@page isELIgnored="true | false" %> 
+```
+
+### Basic Operators
+Arithmetic Operators
+Logical Operators
+Relational Operators
+Reserved words such as true,false,null,empty
+
+### Implicit Objects
+EL-Implicit Objects
+```
+pageContext Object
+	- ${ pageContext.request.queryString} 
+header object
+	- $[header["user-agent"] 
+headerValue
+scope object
+	pageScope 
+	reuestScope 
+	sessionScope 
+	applicationScope
+param 
+paramValues 
+initParam 
+cookie
+```
+
+Syntax To access the Java Bean property
+```
+${course.courseName} ${reuestScope.course.courseName}
+```
+
+Access Nested Property
+```
+$(requestScope.person.car.carName)
+```
+
+## LearnToday Project Notes
 Use bootstrap CDN(content delivery network) for the application.
 
-#### Create Data for course in MySQL.
+### Create Data for course in MySQL.
 Use mysql workbench to create Table
 ```
 CREATE TABLE `mydb`.`course` (
@@ -453,7 +524,7 @@ DEFAULT CHARACTER SET = utf8;
 
 Insert Data
 ```
-INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('1', 'Andrord', 'Zubo', './images/android.png', '3500', 'Android is a mobile …');
+INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('1', 'Android', 'Zubo', './images/android.png', '3500', 'Android is a mobile …');
 INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('2', 'ASP.NET MVC', 'zubo', './images/asomvc.png', '3499', 'ASP.NET MVC is …');
 INSERT INTO `mydb`.`course` (`CourseID`, `CourseTitle`, `Trainer`, `ImageUrl`, `Fees`, `CourseDescription`) VALUES ('3', 'JSP', 'Zubo	', './images/jsp.png', '9999', 'JavaServer Pages(JSP) is a …');
 
@@ -463,7 +534,7 @@ Query Table
 SELECT * FROM mydb.course;
 ```
 
-#### MySQL
+### MySQL
 **Install MySQL for mac notes**
 
 ```
