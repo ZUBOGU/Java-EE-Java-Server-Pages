@@ -139,7 +139,7 @@ will specify the JSP Container to read the specified file and merges its content
 Include Directive
 ```
 <%@ include file="filename"%>
-<%@include file="header.jsp"%>
+<%@ include file="header.jsp"%>
 ```
 
 ### @taglib Directive
@@ -203,7 +203,6 @@ Out Built-in Object Methods
 print
 printIn
 flush
-
 ```
 Syntax to display the current date and time
 ```
@@ -295,10 +294,159 @@ Syntax To Declare an Error Page for Based on HTTP Error Status Codes
 </error-page>
 ```
 
+## Standard Actions
+JSP Standard Actions
+```
+<jsp:include> <jsp:forward> <jsp:param> <jsp:useBean> <jsp:setProperty> <jsp:getProperty> <jsp:plugins> <jsp:fallback> <jsp:attribute> <jsp:body> <jsp:invoke> <jsp:element> <jsp:text>
+```
+
+### <jsp:include>
+Syntax
+```
+<jsp:include page="url flush=“true| false"/>
+```
+
+What is the difference between include action and include directive?
+
+Include directive (<%@include%>)
+```
+Copies the code from one page to another page
+Copies the code during the translation time
+Generates only one Servlet
+Static Binding
+```
+
+Include action (jsp:include)
+```
+Copies the results from one page to another page
+Copies the output during the runtime
+Generates two Servlets Performs 
+Dynamic Binding
+```
+
+### <jsp:forward>
+```<jsp:forward=getRequestDispatcher().forward()```
+JSP page must be buffered to use a ```<jsp:forward >``` tag
+Syntax
+```
+<jsp:forward page="url"/>
+```
+Compare ```<jsp:forward>```
+```
+Direct communication between source and destination pages
+Uses same request and response object
+Source and destination pages should belong to same application
+```
+
+Sendredirect
+```
+Indirect communication between source and destination page
+Uses separate request and response object
+Can be in one same application / different application / same server / different server
+```
+
+### <jsp:param>
+Sytax
+```<jsp:param name="..." value="..."/>```
+Used as a sub-tag for include,forward or plugin action
+
 ### LearnToday Project
 Use bootstrap CDN(content delivery network) for the application
 
+### <jsp:useBean>
+UseBean action is a way for declaring and initializing the actual java bean component object.
+
+What is JavaBean?
+
+Class must be public. Have 0 argumnet constructor. variable declared inside are called as bean properties. All the bean propertieshsould bedeclared private. Bean property must be specift a setter and getter methods and public. Class must implement serializable interface.
+```
+public class JavaBeanName implements Serializable {
+public class JavaBeanName(){}
+private String propertyName;
+public void setPropertyName(String value){this.propertyName=value;} public void getPropertyName(){return this.propertyname;}
+}
+```
+
+Syntax:
+```<jsp:useBean attributes/>```
+
+Attributes:
+```
+id
+class
+scope
+	page
+	request
+	session 
+	application
+type
+beanName
+```
+
+### <jsp:setProperty>
+Syntax:
+```<jsp:setProperty name= "..." property="propertyName|*" value="..."param="..."/>```
+
+setProperty
+```
+<jsp:useBean id="nameBean" class="com.model.Name" scope="session">
+<jsp:setProperty name="nameBean“ property="firstName“ params="firstName"/>
+<jsp:setProperty name="nameBean“ property="lastName“ params="lastName"/> </jsp:useBean>
+```
+
+If the params and properties name match
+```
+<jsp:useBean id="nameBean" class="com.psdemos.model.Name" scope="session">
+<jsp:useBean id="nameBean“ property="*"/> </jsp:useBean>
+```
+
+### <jsp:getProperty>
+Syntax:
+```<jsp:getProperty name="..." property="..."/>```
+
+In another JSP page, Without scope session, inside useBean and outside useBean's getProperty is returning null.
+
+With scope session, inside useBean is returning null and outside useBean getProperty is returning value.
+
+### <jsp:plugins> and <jsp:fallback>
+Syntax:
+```
+<jsp:plugin type="bean | applet " code="..."codebase="..."> 
+<jsp:params>
+<jsp:param name="..." value="..."> 
+</jsp:params>
+</jsp:plugin>
+```
+
+```<jsp:fallback>```
+used to provide some meaning information to the client's browser if the requested plugin cannot be started Optional attributes type,align,height,width,name,title
+
+### <jsp:element>,<jsp:attribute> and <jsp:body>
+Syntax
+```
+<jsp:element> without a body
+<jsp:element name="elementName"/>
+
+<jsp:element> with a body
+<jsp:element name="elementName"> 
+<jsp:attribute>...</jsp:attribute> 
+<jsp:body>...</jsp:body> 
+</jsp:element>
+```
+
 #### MySQL
+**Install MySQL for mac notes**
+
+```
+cat ~/.bash_profile 
+echo 'export PATH="/usr/local/mysql/bin:$PATH"' >> ~/.bash_profile
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+\q
+CREATE DATABASE mydb
+```
+
 Create a new schema 'mydb' which is user to connect to DB. Create `users` table which as `username` and `password` columns.
 
 Then we can use JDBC to register new user and Authenticate existing users.
@@ -308,19 +456,21 @@ select * from users;
 ```
 
 ### Deploy war file
-> cd JSPFundamentals
+> cd LearnToday
 
 > mvn clean install
 
-Copy JSPFundamentals-1.0.war file into Tomcat /webapps directory.
+> cp target/LearnToday.war ~/apache-tomcat-9.0.5/webapps/
+
+Copy LearnToday.war file into Tomcat /webapps directory.
 
 Go to browser and view the page.
 
-> http://localhost:8080/JSPFundamentals-1.0
+> http://localhost:8080/LearnToday
 
 Add the url path in JSP Page
 
-> http://localhost:8080/JSPFundamentals-1.0/HelloWorld.jsp
+> http://localhost:8080/LearnToday/index.jsp
 
 ### Maven Archetype to initial a project
 ```mvn -DarchetypeGroupId=org.codehaus.mojo.archetypes -DarchetypeArtifactId=webapp-javaee7 -DarchetypeVersion=1.1 -DgroupId=com.JSPFundamentals -DartifactId=JSPFundamentals -Dversion=1.0 -Darchetype.interactive=false --batch-mode -Dpackage=com.JSPFundamentals archetype:generate```
