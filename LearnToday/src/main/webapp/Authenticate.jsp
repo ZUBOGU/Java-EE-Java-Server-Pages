@@ -52,7 +52,7 @@
         session.setAttribute("user", userName);
         String requestUrl = request.getParameter("requestUrl");
         if(requestUrl == null || requestUrl.length() == 0) {
-            response.sendRedirect("Courses.jsp");
+            response.sendRedirect("courses.jsp");
         } else {
             response.sendRedirect(url+".jsp");
         }

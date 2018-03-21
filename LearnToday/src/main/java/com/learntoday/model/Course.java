@@ -15,6 +15,7 @@ public class Course implements Serializable{
     private String description;
     private String imageUrl;
     private int fees;
+    private int userRating;
     private int ratings;
 
     public String getCourseName() {
@@ -53,6 +54,12 @@ public class Course implements Serializable{
 	public void setRatings(int ratings) {
 		this.ratings = ratings;
 	}
+    public int getUserRating(){
+        return userRating;
+    }
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
+    }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public static List<Course> getCourses() {

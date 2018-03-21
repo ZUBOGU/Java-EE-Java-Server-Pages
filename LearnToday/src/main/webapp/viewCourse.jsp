@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/WEB-INF/ratings.tld" prefix="cs" %>
 <!DOCTYPE html>
 <head>
 <title><jsp:getProperty name="course" property="courseName"/> Details</title>
@@ -16,10 +18,14 @@
     String user = (String)session.getAttribute("user");
     String message = "Welcome "+user+" !";
 </jsp:scriptlet>
-<b>
-    <jsp:expression>message</jsp:expression>
-</b>
 
+<div class="row">
+<div class="col-md-12">
+<h3><jsp:expression>message</jsp:expression></h3>
+</div>
+</div>
+
+<form name="coursefrm" action="ratings.jsp" method="post">
 <jsp:useBean id="course" class="com.learntoday.model.Course" scope="request"/>
 
    
@@ -37,12 +43,33 @@
 		   		<p><strong>Trainer Name : </strong> ${course.facultyName} </p>
 		   		<p><strong>Course Description : </strong> <br/> ${course.description} </p>
 		   		<p><strong>Course Fee : </strong> ${course.fees} </p>
+		   		<p><strong>Course Ratings : </strong>  <cs:ratings course="${course.courseName}"/> </p>
+		   		<c:if test="${course.userRating > 0}">
+                    <p><strong>Your Ratings: </strong> ${course.userRating} </p>
+                </c:if>
+                <c:if test="${course.userRating == 0}">
+                <p><strong>Enter your rating :
+                    <select name="ratings">
+                    <c:forEach var="i" begin="1" end="5">
+                            <option value='${i}'>${i}</option><p>
+                    </c:forEach>
+                    </select>
+                </strong>
+                </p>
+                </c:if>
   			</div>
-	</div>
-   				
-   		<p class="text-center"><a href="Courses.jsp" class="btn btn-lg btn-success">View All Courses</a> </p>
+	       </div>
+         <p class="text-center">
+            <c:if test="${course.userRating==0}">
+            <input type="submit" name="submit" value="Save Ratings"
+           	class="btn btn-lg btn-success"/>
+            </c:if>
+            <a href="courses.jsp" class="btn btn-lg btn-success">View All Courses</a>
+         </p>
    	</div>
    </div>
+    <input type="hidden" name="courseName" value="${course.courseName}"/>
+   </form>
  </article>
  
 <footer>
